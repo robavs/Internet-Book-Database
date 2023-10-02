@@ -1,0 +1,59 @@
+<div class="signup-form-container">
+    <form class="signup-form">
+        <mat-form-field class="input-field">
+            <mat-label>
+                FirstName
+            </mat-label>
+
+            <input #firstName (input)="inputChange('firstName', firstName.value)" matInput name="firstName"
+                placeholder="FirstName" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+            <mat-label>
+                LastName
+            </mat-label>
+
+            <input #lastName (input)="inputChange('lastName', lastName.value)" matInput name="lastName"
+                placeholder="LastName" autocomplete="off">
+        </mat-form-field>
+
+
+        <mat-form-field class="input-field">
+            <mat-label>
+                Email
+            </mat-label>
+
+            <input #email (input)="inputChange('email', email.value)" matInput name="email" placeholder="Email"
+                autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+            <mat-label>
+                Password
+            </mat-label>
+
+            <input #password (input)="inputChange('password', password.value)" matInput name="password"
+                placeholder="Password" autocomplete="off" type="password">
+        </mat-form-field>
+
+        <hr>
+
+        <div class="signup-btn-container">
+            <button mat-raised-button (click)="signup()">
+                Sign up
+            </button>
+        </div>
+
+        <mat-list role="list">
+            <p *ngFor="let error of errors">
+                <mat-list-item role="listitem">
+                    {{error}}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </p>
+        </mat-list>
+
+        <spinner *ngIf="waitingForSignupResponse"></spinner>
+    </form>
+</div>

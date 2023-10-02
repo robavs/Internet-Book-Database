@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>{{data.genreName}} ({{data.genreBooks.length}} Books)</h1>
+<mat-divider></mat-divider>
+
+<div mat-dialog-content *ngFor="let book of data.genreBooks">
+
+    Name:
+    <div style="margin-top:10px">
+        <mat-chip-option style="margin:-5px" (click)="goToBook(book.id)">
+            {{book.name}}
+        </mat-chip-option>
+    </div>
+
+    <div style="margin-top:10px">
+        Rating: <h4>{{book.rating}}</h4>
+    </div>
+
+    Authors:
+    <div style="margin-top:10px">
+        <mat-chip-option *ngFor="let author of book.authors" style="margin:-5px" (click)="goToAuthor(author.id)">
+            {{author.firstName}} {{author.lastName}}
+        </mat-chip-option>
+    </div>
+
+    <div style=" margin-top:10px">
+        Pulbication date: <h4>{{book.publicationDate.toString().split("T")[0]}}</h4>
+    </div>
+
+    <mat-divider></mat-divider>
+</div>
+
+<div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -1,0 +1,18 @@
+.books-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.book-card {
+    width: 90vw;
+    margin-top: 20px;
+}
+
+.delete-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px
+}

@@ -1,0 +1,30 @@
+<spinner *ngIf="!hasLoaded"></spinner>
+
+<div *ngIf="hasLoaded">
+    <div class="author-container">
+        <img [src]="author$.value.image" class="author-image" />
+
+        <h2>
+            {{author$.value.firstName}} {{author$.value.lastName}}
+        </h2>
+
+        <h3>
+            Rating: {{author$.value.rating}}
+        </h3>
+
+        <p>{{author$.value.biography}}</p>
+    </div>
+
+
+    <div class="book-container">
+        <div *ngFor="let book of books" style="margin:20px;border-bottom: 2px solid grey;">
+            <img [src]="book.image" class="book-image" style="cursor: pointer;" (click)="goToBook(book.id)" />
+            <h2 style="cursor: pointer;" (click)="goToBook(book.id)">Name: {{book.name}}</h2>
+            <h2>Rating: {{book.rating}}</h2>
+        </div>
+    </div>
+
+    <h1 *ngIf="books.length === 0" style="color:white">
+        Author currently doesn't have any added books
+    </h1>
+</div>

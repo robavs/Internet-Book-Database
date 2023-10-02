@@ -1,0 +1,46 @@
+.book-container {
+    height: 400px;
+    margin: 20px
+}
+
+.book-image {
+    max-width: 400px;
+    max-height: 400px;
+    float: right
+}
+
+.author-image {
+    max-width: 200px;
+    max-height: 150px;
+}
+
+.authors-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.author-container,
+.review-container {
+    border-bottom: 2px solid grey;
+    margin: 15px
+}
+
+.add-review {
+    display: flex;
+    flex-direction: column;
+    margin: 20px
+}
+
+.input-field {
+    width: 100%;
+}
+
+.icon-btn {
+    font-size: 24px;
+}
+
+.add-review-btn-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px
+}

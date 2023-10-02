@@ -1,0 +1,47 @@
+<div class="signin-form-container ">
+    <form class="signin-form">
+        <mat-form-field class="input-field">
+            <mat-label>
+                Email
+            </mat-label>
+
+            <input #emailInput (input)="setEmail(emailInput.value)" matInput name="email" placeholder="Email"
+                autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field class="input-field">
+            <mat-label>
+                Password
+            </mat-label>
+
+            <input #passwordInput (input)="setPassword(passwordInput.value)" matInput name="password"
+                placeholder="Password" autocomplete="off" type="password">
+        </mat-form-field>
+
+        <mat-radio-group class="user-signin-option-container">
+            <mat-radio-button #redaerRoleInput (input)="setRole(redaerRoleInput.value)" value="reader"
+                checked>Reader</mat-radio-button>
+            <mat-radio-button #moderatorRoleInput (input)="setRole(moderatorRoleInput.value)"
+                value="moderator">Moderator</mat-radio-button>
+        </mat-radio-group>
+
+        <hr>
+
+        <div class="signin-btn-container">
+            <button mat-raised-button (click)="signin()">
+                Sign in
+            </button>
+        </div>
+
+        <mat-list role="list">
+            <p *ngFor="let error of errors">
+                <mat-list-item role="listitem">
+                    {{error}}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </p>
+        </mat-list>
+
+        <spinner *ngIf="waitingForSigninResponse"></spinner>
+    </form>
+</div>

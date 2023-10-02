@@ -1,0 +1,12 @@
+.authors-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.author-card {
+    width: 90vw;
+    margin-top: 20px;
+}

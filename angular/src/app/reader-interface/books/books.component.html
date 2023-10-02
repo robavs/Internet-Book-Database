@@ -1,0 +1,53 @@
+<spinner *ngIf="isLoading"></spinner>
+
+<div *ngIf="!isLoading" class="books-container">
+    <paginator [length]="paginatorLength" (pageChanged)=" onChangingPage($event)">
+    </paginator>
+
+    <mat-card *ngFor="let book of booksForCurrentPage$ | async" class="book-card">
+        <mat-card-header>
+            <mat-card-title-group>
+                <mat-card-title (click)="goToBook(book.id)" style="cursor: pointer;">
+                    {{book.name}}
+                </mat-card-title>
+
+                <mat-card-subtitle>
+                    Rating: {{book.rating}} out of {{book.numberOfReviews}} reviews
+                </mat-card-subtitle>
+
+                <img mat-card-md-image [src]="book.image" [alt]="book.name" (click)="goToBook(book.id)"
+                    style="cursor: pointer;">
+            </mat-card-title-group>
+        </mat-card-header>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <mat-card-subtitle>
+                Authors:
+            </mat-card-subtitle>
+
+            <mat-chip-listbox>
+                <mat-chip-option *ngFor="let author of book.authors" (click)="goToAuthor(author.id)">
+                    {{author.firstName}} {{author.lastName}}
+                </mat-chip-option>
+            </mat-chip-listbox>
+
+        </mat-card-content>
+
+        <mat-divider></mat-divider>
+
+        <mat-card-content>
+            <mat-card-subtitle>
+                Genres:
+            </mat-card-subtitle>
+
+            <mat-chip-listbox>
+                <mat-chip-option *ngFor="let genre of book.genres">
+                    {{genre.name}}
+                </mat-chip-option>
+            </mat-chip-listbox>
+
+        </mat-card-content>
+    </mat-card>
+</div>

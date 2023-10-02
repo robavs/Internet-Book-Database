@@ -1,0 +1,21 @@
+.author-container {
+    height: 400px;
+    margin: 20px
+}
+
+.author-image {
+    max-width: 400px;
+    max-height: 400px;
+    float: right
+}
+
+.book-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-image {
+    max-width: 200px;
+    max-height: 150px;
+    float: right
+}

@@ -1,0 +1,109 @@
+<spinner *ngIf="!hasLoaded"></spinner>
+
+<div class="book-container">
+    <img [src]="book$.value.image" class="book-image" />
+
+    <h2>
+        {{book$.value.name}}
+    </h2>
+
+    <h3>
+        Rating: {{book$.value.rating}}
+    </h3>
+
+    <h3>
+        Publication date: {{book$.value.publicationDate!.toString().split("T")[0]}}
+    </h3>
+
+</div>
+
+<div class="authors-container">
+    <div *ngFor="let author of book$.value.authors" class="author-container">
+        <img [src]="author.image" class="author-image" (click)="goToAuthor(author.id)" style="cursor:pointer" />
+
+        <h2 (click)="goToAuthor(author.id)" style="cursor:pointer">
+            {{author.firstName}} {{author.lastName}}
+        </h2>
+
+        <h3>
+            Rating: {{author.rating}}
+        </h3>
+
+    </div>
+</div>
+
+
+<!-- User review -->
+
+<div *ngIf="userReview">
+    <h1 style="color:white">Your Review:</h1>
+    <div class="review-container">
+        <!-- <button mat-raised-button color="primary">
+            Update
+        </button> -->
+
+        <h2>Rating: {{userReview.rating}}</h2>
+        <p>{{userReview.comment}}</p>
+    </div>
+</div>
+
+<div *ngIf="!userReview">
+    <h1 style="color:white">Add Review</h1>
+
+    <form class="add-review">
+        <mat-form-field class="input-field">
+            <mat-label>
+                Rating
+            </mat-label>
+
+            <input matInput name="rating" placeholder="Rating" autocomplete="off" type="number" #ratingAdd
+                (input)="getUserReviewFromForm('rating', ratingAdd.value)">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Comment</mat-label>
+            <textarea matInput #commentAdd (input)="getUserReviewFromForm('comment', commentAdd.value)">
+
+            </textarea>
+        </mat-form-field>
+
+        <div class="add-review-btn-container">
+            <button mat-raised-button color="primary" (click)="addReview()">Add</button>
+        </div>
+
+        <mat-list role="list">
+            <p *ngFor="let error of this.reviewService.errors$.value">
+                <mat-list-item role="listitem">
+                    {{error}}
+                </mat-list-item>
+                <mat-divider></mat-divider>
+            </p>
+        </mat-list>
+    </form>
+
+</div>
+
+
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+
+<h1 style="color:white">Reviews:</h1>
+
+<h1 *ngIf="!reviews.length" style="color:white">There are no reviews for this book</h1>
+
+<div class="reviews-container">
+    <div *ngFor="let review of reviews" class="review-container">
+        <h2 *ngIf="review.readerId === userId">
+            You
+        </h2>
+
+        <h2 *ngIf="review.readerId !== userId">
+            {{review.reader.firstName}} {{review.reader.lastName}}
+        </h2>
+
+        <h2>Rating: {{review.rating}}</h2>
+        <p>{{review.comment}}</p>
+    </div>
+</div>

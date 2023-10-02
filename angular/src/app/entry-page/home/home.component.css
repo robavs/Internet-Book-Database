@@ -1,0 +1,37 @@
+.home-paragraph {
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 20px;
+    color: white
+}
+
+.explore-paragraph {
+    text-align: center;
+    font-size: 18px;
+    color: white
+}
+
+.login-container {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-link,
+.signup-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin: 20px
+}
+
+.signin-link:hover,
+.signup-link:hover {
+    background-color: #0056b3;
+}

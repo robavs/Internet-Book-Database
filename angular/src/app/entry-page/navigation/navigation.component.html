@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+
+    <a button mat-button routerLink="" class="navbar-items" routerLinkActive="is-active"
+        [routerLinkActiveOptions]="{ exact: true }">
+        Home
+    </a>
+
+    <a button mat-button routerLink="signin" class="navbar-items" routerLinkActive="is-active">
+        Signin
+    </a>
+
+    <a button mat-button routerLink="signup" class="navbar-items" routerLinkActive="is-active">
+        Signup
+    </a>
+
+</mat-toolbar>
+
+<router-outlet></router-outlet>
